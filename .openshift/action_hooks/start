@@ -1,0 +1,12 @@
+#!/bin/bash
+# The logic to start up your application should be put in this
+# script. The application will work only if it binds to
+# $OPENSHIFT_INTERNAL_IP:8080
+
+cd $OPENSHIFT_GEAR_DIR/repo/disco-tunnel
+nohup sh disco-tunnel.sh &
+
+cd $OPENSHIFT_GEAR_DIR/repo/osgi/equinox
+sh ./launch-osgi.sh
+
+
