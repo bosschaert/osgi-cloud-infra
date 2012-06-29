@@ -7,6 +7,6 @@ cd $OPENSHIFT_GEAR_DIR/repo/disco-tunnel
 nohup sh create-tunnel.sh &
 
 cd $OPENSHIFT_GEAR_DIR/repo/osgi/equinox
-sh ./launch-osgi.sh
+nohup sh ./launch-osgi.sh &
 
 
