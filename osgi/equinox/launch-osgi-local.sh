@@ -7,5 +7,12 @@ sed "s/^.*zookeeper-plugin.*$/\\\\/" < config/config.ini > config-local/config.i
 mkdir load
 cp load-template/org.apache.cxf.dosgi.discovery.zookeeper.cfg load
 echo zookeeper.host = $OPENSHIFT_INTERNAL_IP >> load/org.apache.cxf.dosgi.discovery.zookeeper.cfg
-java -Dorg.ops4j.pax.web.listening.addresses=$OPENSHIFT_GEAR_DNR -jar org.eclipse.osgi_3.7.2.v20120110-1415.jar -configuration config-local -clean 
+
+if [ "$1" = "debug" ]; then
+    JAVA_OPTS="-agentlib:jdwp=transport=dt_socket,server=y,suspend=y,address=localhost:7777"
+else
+    JAVA_OPTS=""
+fi
+
+java $JAVA_OPTS -Dorg.ops4j.pax.web.listening.addresses=$OPENSHIFT_GEAR_DNS -jar org.eclipse.osgi_3.7.2.v20120110-1415.jar -configuration config-local -clean 
 
