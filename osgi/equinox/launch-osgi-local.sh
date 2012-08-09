@@ -2,7 +2,8 @@ export OPENSHIFT_GEAR_DNS=0.0.0.0
 export OPENSHIFT_INTERNAL_IP=127.0.0.1
 mkdir config-local
 # Remove the zookeeper-plugin as no port translation is needed for local runs
-sed "s/^.*zookeeper-plugin.*$/\\\\/" < config/config.ini > config-local/config.ini
+# sed "s/^.*zookeeper-plugin.*$/\\\\/" < config/config.ini > config-local/config.ini
+cp config/config.ini config-local/config.ini
 
 mkdir load
 cp load-template/org.apache.cxf.dosgi.discovery.zookeeper.cfg load
