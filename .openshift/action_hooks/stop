@@ -1,5 +1,7 @@
 #!/bin/bash
 # The logic to stop your application should be put in this script.
 
-ps -fe | grep java | grep -v grep | awk '{print $2}' | xargs -n 1 kill -9
+#ps -fe | grep java | grep -v grep | awk '{print $2}' | xargs -n 1 kill -9
+killall java || true
+echo Removed previous processes.
 

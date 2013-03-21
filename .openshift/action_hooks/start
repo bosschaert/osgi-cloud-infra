@@ -3,10 +3,12 @@
 # script. The application will work only if it binds to
 # $OPENSHIFT_INTERNAL_IP:8080
 
-cd $OPENSHIFT_GEAR_DIR/repo/disco-tunnel
-nohup sh create-tunnel.sh &
+cd $OPENSHIFT_REPO_DIR/disco-tunnel
+echo Current Dir: `pwd`
+nohup sh ./create-tunnel.sh &
 
-cd $OPENSHIFT_GEAR_DIR/repo/osgi/equinox
+cd $OPENSHIFT_REPO_DIR/osgi/equinox
+echo Current Dir: `pwd`
 nohup sh ./launch-osgi.sh &
 
 
